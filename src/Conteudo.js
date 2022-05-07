@@ -36,92 +36,124 @@ export default function Conteudo() {
 
     const dadosPerfil = {linkProfile: "https://www.instagram.com/layconjohn/", imageProfile: "https://yt3.ggpht.com/ytc/AKedOLSbZzHrV2Fp6Bc5WmvzbQ6nanXYjdnx9UbqmbpbtbU=s88-c-k-c0x00ffffff-no-rj", nickName:"layconjohn", nameProfile:"Laycon John"}
 
+    function Storie() {
+        return (
+            <div class="stories branco">
+                {stories.map(storie => <div class="storie"><img src={storie} alt=""></img></div>)}
+                <div class="seta-stories">
+                    <ion-icon name="chevron-forward-circle"></ion-icon>
+                </div>
+            </div>
+        )
+    }
+
+    function Post() {
+        return (
+            <div class="posts">
+                {posts.map(post => 
+                <div class="post">
+                    <div class="aba-superior branco">
+                        <a href={post.imageProfile} target="_blank">
+                            <ion-icon name="logo-javascript"></ion-icon>
+                            <h4 class="preto">{post.titleAcount}</h4>
+                        </a>
+                        <ion-icon name="ellipsis-horizontal" class="opcoes"></ion-icon>
+
+                    </div>
+                    <img src={post.imagePost} alt=""></img>
+                    <div class="aba-inferior branco">
+                        <div class="icones-inferior">
+                            <ion-icon name="heart-outline" class="preto"></ion-icon>
+                            <ion-icon name="chatbubble-outline" class="preto"></ion-icon>
+                            <ion-icon name="paper-plane-outline" class="preto"></ion-icon>
+                            <div class="salvar">
+                                <ion-icon name="bookmark-outline"class="preto"></ion-icon>
+                            </div>
+                            
+                        </div>
+                        <div class="curtidas">
+                            <img src={post.imageLike} alt=""></img>
+                            <p class="preto">Curtido por <strong><a href="https://www.instagram.com/teslamotors/" target="_blank">{post.nameLike}</a></strong> e <streong>{post.numberLike}</streong></p>
+                        </div>
+                    </div>
+                </div>)}
+            </div>
+        )
+    }
+
+    function BordaSeparadora() {
+        return (
+            <div class="borda-separadora cinza-fundo"></div>
+        )
+    }
+
+    function Perfil() {
+        return (
+            <a href={dadosPerfil.linkProfile}>
+                <div class="perfil">
+                    <img src={dadosPerfil.imageProfile} alt=""></img>
+                    <div class="nome-perfil">
+                        <h5 class="preto">{dadosPerfil.nickName}</h5>
+                        <h6 class="cinza-claro">{dadosPerfil.nameProfile}</h6>
+                    </div>
+                </div>
+            </a>
+        )
+    }
+
+    function BordaHorizontal() {
+        return (
+            <div class="borda-horizontal cinza-fundo"></div>
+        )
+    }
+
+    function Sugestoes() {
+        return (
+            <div class="sugestoes">
+                <div class="sugestoes-esquerda">
+
+                    <p class="cinza-escuro">Sugestões para você</p>
+
+                    {recomendados.map(recomendado =>
+                    <div class="recomendados">
+                        <ion-icon name={recomendado.nameIcon}></ion-icon>
+                        <a href={recomendado.link} target="_blank">
+                            <div class="user-recomendado">
+                                <p class="preto">{recomendado.name}</p>
+                                <p class="cinza-escuro">segue você</p>
+                            </div>
+                        </a>
+                    </div>)};
+
+                </div>
+                <div class="sugestoes-direita">
+                    <h6>Ver tudo</h6>
+                    {recomendados.map( recomendaqdo => <p class="azul">Seguir</p>)}
+                </div>
+            </div>
+        )
+    }
+
+    function Rodape() {
+        return (
+            <div class="rodape">
+                {textosRodape.map(rodape => <p class="cinza-claro" >{rodape}</p>)}
+            </div>
+        )
+    }
     // render
     return (
         <div class="conteudo">
             <div class="esquerda">
-                <div class="stories branco">
-                    {stories.map(storie => <div class="storie"><img src={storie} alt=""></img></div>)}
-                    <div class="seta-stories">
-                        <ion-icon name="chevron-forward-circle"></ion-icon>
-                    </div>
-                </div>
-
-
-                <div class="posts">
-                    {posts.map(post => 
-                    <div class="post">
-                        <div class="aba-superior branco">
-                            <a href={post.imageProfile} target="_blank">
-                                <ion-icon name="logo-javascript"></ion-icon>
-                                <h4 class="preto">{post.titleAcount}</h4>
-                            </a>
-                            <ion-icon name="ellipsis-horizontal" class="opcoes"></ion-icon>
-
-                        </div>
-                        <img src={post.imagePost} alt=""></img>
-                        <div class="aba-inferior branco">
-                            <div class="icones-inferior">
-                                <ion-icon name="heart-outline" class="preto"></ion-icon>
-                                <ion-icon name="chatbubble-outline" class="preto"></ion-icon>
-                                <ion-icon name="paper-plane-outline" class="preto"></ion-icon>
-                                <div class="salvar">
-                                    <ion-icon name="bookmark-outline"class="preto"></ion-icon>
-                                </div>
-                                
-                            </div>
-                            <div class="curtidas">
-                                <img src={post.imageLike} alt=""></img>
-                                <p class="preto">Curtido por <strong><a href="https://www.instagram.com/teslamotors/" target="_blank">{post.nameLike}</a></strong> e <streong>{post.numberLike}</streong></p>
-                            </div>
-                        </div>
-                    </div>)}
-                </div>
+                <Storie />
+                <Post />
             </div>
-
-
-            <div class="borda-separadora cinza-fundo"></div>
-
+            <BordaSeparadora />
             <div class="direita">
-                <a href={dadosPerfil.linkProfile}>
-                    <div class="perfil">
-                        <img src={dadosPerfil.imageProfile} alt=""></img>
-                        <div class="nome-perfil">
-                            <h5 class="preto">{dadosPerfil.nickName}</h5>
-                            <h6 class="cinza-claro">{dadosPerfil.nameProfile}</h6>
-                        </div>
-                    </div>
-                </a>
-
-                <div class="borda-horizontal cinza-fundo"></div>
-
-                <div class="sugestoes">
-                    <div class="sugestoes-esquerda">
-
-                        <p class="cinza-escuro">Sugestões para você</p>
-
-                        {recomendados.map(recomendado =>
-                        <div class="recomendados">
-                            <ion-icon name={recomendado.nameIcon}></ion-icon>
-                            <a href={recomendado.link} target="_blank">
-                                <div class="user-recomendado">
-                                    <p class="preto">{recomendado.name}</p>
-                                    <p class="cinza-escuro">segue você</p>
-                                </div>
-                            </a>
-                        </div>)};
-
-                    </div>
-                    <div class="sugestoes-direita">
-                        <h6>Ver tudo</h6>
-                        {recomendados.map( recomendaqdo => <p class="azul">Seguir</p>)}
-                    </div>
-                </div>
-
-
-                <div class="rodape">
-                    {textosRodape.map(rodape => <p class="cinza-claro" >{rodape}</p>)}
-                </div>
+                <Perfil />
+                <BordaHorizontal />
+                <Sugestoes />
+                <Rodape />
             </div>
         </div>
     )

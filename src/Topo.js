@@ -7,10 +7,8 @@ export default function Topo(props) {
         {urlLink: "https://www.instagram.com/layconjohn/", ionIconName: "person-outline", class:"pessoa"}
     ]
 
-
-    // render
-    return (          
-        <div class="topo branco">
+    function Logo(){
+        return (
             <a href="https://www.instagram.com/" target="_blank">
                 <div class="logo">
                     <ion-icon name="logo-instagram"></ion-icon>
@@ -18,17 +16,36 @@ export default function Topo(props) {
                     <img src="https://logodownload.org/wp-content/uploads/2017/04/instagram-logo-1.png" alt=""></img>
                 </div>
             </a> 
-
+        )
+    }
+    
+    function Busca(){
+        return (
             <div class="busca cinza-busca"><p>Pesquisar</p></div>
-
+        )
+    }
+    
+    function Menu(){
+        return (
             <div class="menu">
                 <a href="https://www.instagram.com/" target="_blank">
                     {menuItem.map(menu => <ion-icon name={menu.ionIconName} class={menu.class}></ion-icon>)}
                 </a>
             </div>
+        )
+    
+    }
 
+    // render
+    return (          
+        <div class="topo branco">
+            <Logo />
+            <Busca />
+            <Menu />
         </div>
     )
 }
+
+
 
 
