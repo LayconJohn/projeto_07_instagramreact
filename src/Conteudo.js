@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function Conteudo() {
     // logic
     const stories = [
@@ -48,6 +50,23 @@ export default function Conteudo() {
     }
 
     function Post() {
+        // <ion-icon name="heart-outline" class="preto"></ion-icon>
+        const [like, setLike] = React.useState("heart-outline");
+
+        function curtir() {
+            if (like === "heart-outline") {
+                setLike("heart");
+            } else {
+                setLike("heart-outline");
+            }
+            
+            //<ion-icon name="heart" class="curtido"></ion-icon>
+        }
+
+        function curtirFoto() {
+            return curtir('this')
+        }
+
         return (
             <div class="posts">
                 {posts.map(post => 
@@ -60,12 +79,12 @@ export default function Conteudo() {
                         <ion-icon name="ellipsis-horizontal" class="opcoes"></ion-icon>
 
                     </div>
-                    <img src={post.imagePost} alt=""></img>
+                    <img src={post.imagePost}></img>
                     <div class="aba-inferior branco">
                         <div class="icones-inferior">
-                            <ion-icon name="heart-outline" class="preto"></ion-icon>
+                            <div class = "curtido" onClick={curtirFoto}><ion-icon name={like} class="preto"></ion-icon></div>
                             <ion-icon name="chatbubble-outline" class="preto"></ion-icon>
-                            <ion-icon name="paper-plane-outline" class="preto"></ion-icon>
+                            <ion-icon name="paper-plane-outline" class="preto "></ion-icon>
                             <div class="salvar">
                                 <ion-icon name="bookmark-outline"class="preto"></ion-icon>
                             </div>
@@ -141,6 +160,7 @@ export default function Conteudo() {
             </div>
         )
     }
+
     // render
     return (
         <div class="conteudo">

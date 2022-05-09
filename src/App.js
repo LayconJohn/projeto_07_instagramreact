@@ -5,7 +5,7 @@ import BarraInferiorMobile from "./BarraInferiorMobile";
 
 export default function App() {
     return (
-        <div> 
+        <div class="tela"> 
             <TopoMobile />
             <Topo />
             <Conteudo />
